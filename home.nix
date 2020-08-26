@@ -18,6 +18,12 @@
     };
   };
 
+  programs.git = {
+    enable = true;
+    userName = "Martijn Janssen";
+    userEmail = "martijn9612+github@gmail.com";
+  };
+
   home.packages = with pkgs; [
     htop
     mlocate
