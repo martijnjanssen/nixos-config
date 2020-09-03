@@ -11,10 +11,18 @@
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;
+    sessionVariables = {
+      GOPATH = "/home/martijn/go";
+      GOBIN = "${config.programs.zsh.sessionVariables.GOPATH}/bin";
+      PATH = "${config.programs.zsh.sessionVariables.GOBIN}:$(yarn global bin):$PATH";
+      EDITOR = "vim";
+    };
 
     oh-my-zsh = {
       enable = true;
       theme = "robbyrussell";
+
+      plugins = [ "git" "docker" ];
     };
   };
 
@@ -28,9 +36,18 @@
     htop
     mlocate
     tree
+    silver-searcher
 
     emacs
     vim
+
+    fira-code
+    fira-code-symbols
+
+    go
+    protobuf
+    yarn
+    nodejs
 
     spotify
     vlc

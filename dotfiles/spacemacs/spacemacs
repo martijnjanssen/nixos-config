@@ -42,6 +42,7 @@ This function should only modify configuration layer settings."
      git
      helm
      markdown
+     html
      (treemacs :variables
                treemacs-no-png-images t)
      org
@@ -49,6 +50,11 @@ This function should only modify configuration layer settings."
             shell-default-shell 'eshell
             shell-default-height 30
             shell-default-position 'bottom)
+     (go :variables
+         go-backend 'lsp
+         go-format-before-save t)
+     (typescript :variables
+                 typescript-fmt-on-save t)
      spell-checking
      multiple-cursors
      syntax-checking
