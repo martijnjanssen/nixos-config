@@ -66,6 +66,7 @@
     mpv
     transmission-gtk
     tdesktop
+    teams
 
     openttd
 
