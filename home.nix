@@ -17,6 +17,16 @@
       PATH = "${config.programs.zsh.sessionVariables.GOBIN}:$(yarn global bin):$PATH";
       EDITOR = "vim";
     };
+    shellAliases = {
+      bst = "curl -s https://api.cryptowat.ch/markets/bitstamp/xrpeur/summary | jq '.result.price'";
+      up = "sudo wg-quick up wg0";
+      down = "sudo wg-quick down wg0";
+    };
+    initExtra = ''
+      race () {
+        streamlink $1 1080p --hls-audio-select "*"
+      }
+    '';
 
     oh-my-zsh = {
       enable = true;
@@ -36,6 +46,7 @@
     htop
     mlocate
     tree
+    jq
     silver-searcher
 
     emacs
@@ -50,10 +61,15 @@
     nodejs
 
     spotify
+    streamlink
     vlc
+    mpv
+    transmission-gtk
     tdesktop
 
     openttd
+
+    gnomeExtensions.caffeine
   ];
 
   home.file.".spacemacs".source = dotfiles/spacemacs/spacemacs;
