@@ -74,6 +74,7 @@
   ];
 
   home.file.".spacemacs".source = dotfiles/spacemacs/spacemacs;
+  home.file.".ssh/config".source = dotfiles/ssh/config;
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
