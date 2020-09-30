@@ -1,6 +1,16 @@
 { config, pkgs, ... }:
 
-{
+with pkgs;
+let
+  my-python-packages = python-packages: with python-packages; [
+    matplotlib
+    python-language-server
+    moretools
+    # other python packages you want
+  ]; 
+  python-with-my-packages = python3.withPackages my-python-packages;
+
+in {
   targets.genericLinux.enable = true;
 
   nixpkgs.config.allowUnfree = true;
@@ -8,13 +18,15 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  fonts.fontconfig.enable = true;
+
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;
     sessionVariables = {
       GOPATH = "/home/martijn/go";
       GOBIN = "${config.programs.zsh.sessionVariables.GOPATH}/bin";
-      PATH = "${config.programs.zsh.sessionVariables.GOBIN}:$(yarn global bin):$PATH";
+      PATH = "$HOME/.emacs.d/bin:${config.programs.zsh.sessionVariables.GOBIN}:$(yarn global bin):$PATH";
       EDITOR = "vim";
     };
     shellAliases = {
@@ -48,6 +60,8 @@
     tree
     jq
     silver-searcher
+    ripgrep
+    fd
 
     emacs
     vim
@@ -59,6 +73,9 @@
     protobuf
     yarn
     nodejs
+    texlive.combined.scheme-medium
+
+    python-with-my-packages
 
     spotify
     streamlink
@@ -71,10 +88,16 @@
     openttd
 
     gnomeExtensions.caffeine
+    dropbox
   ];
 
-  home.file.".spacemacs".source = dotfiles/spacemacs/spacemacs;
+
   home.file.".ssh/config".source = dotfiles/ssh/config;
+
+  home.file.".spacemacs".source = dotfiles/spacemacs/spacemacs;
+  home.file.".doom.d/init.el".source = dotfiles/doom/init.el;
+  home.file.".doom.d/config.el".source = dotfiles/doom/config.el;
+  home.file.".doom.d/packages.el".source = dotfiles/doom/packages.el;
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.

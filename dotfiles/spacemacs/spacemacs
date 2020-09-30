@@ -43,6 +43,9 @@ This function should only modify configuration layer settings."
      helm
      markdown
      html
+     (python :variables
+             python-backend 'lsp
+             python-lsp-server 'mspyls)
      (treemacs :variables
                treemacs-no-png-images t)
      org
