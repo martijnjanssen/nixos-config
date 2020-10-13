@@ -52,7 +52,21 @@ in {
     enable = true;
     userName = "Martijn Janssen";
     userEmail = "martijn9612+github@gmail.com";
+    extraConfig = {
+      pull = {
+        rebase = "true";
+      };
+      http = {
+        cookieFile = "~/.gitcookies";
+      };
+    };
   };
+
+  programs.emacs = {
+    enable = true;
+    extraPackages = epkgs: [ epkgs.vterm ];
+  };
+
 
   home.packages = with pkgs; [
     htop
@@ -63,8 +77,8 @@ in {
     ripgrep
     fd
 
-    emacs
     vim
+    gitAndTools.git-codereview
 
     fira-code
     fira-code-symbols
