@@ -26,7 +26,7 @@ in {
     sessionVariables = {
       GOPATH = "/home/martijn/go";
       GOBIN = "${config.programs.zsh.sessionVariables.GOPATH}/bin";
-      PATH = "$HOME/.emacs.d/bin:${config.programs.zsh.sessionVariables.GOBIN}:$(yarn global bin):$PATH";
+      PATH = "$HOME/.cargo/bin:$HOME/.emacs.d/bin:${config.programs.zsh.sessionVariables.GOBIN}:$(yarn global bin):$PATH";
       EDITOR = "vim";
     };
     shellAliases = {
@@ -83,6 +83,8 @@ in {
     fira-code
     fira-code-symbols
 
+    rustup
+    rust-analyzer
     go
     protobuf
     yarn
