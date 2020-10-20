@@ -76,6 +76,7 @@ in {
     silver-searcher
     ripgrep
     fd
+    cmake
 
     vim
     gitAndTools.git-codereview
