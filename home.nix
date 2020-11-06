@@ -10,6 +10,15 @@ let
   ]; 
   python-with-my-packages = python3.withPackages my-python-packages;
 
+  comma = import ( fetchFromGitHub {
+      owner = "Shopify";
+      repo = "comma";
+      rev = "4a62ec17e20ce0e738a8e5126b4298a73903b468";
+      sha256 = "0n5a3rnv9qnnsrl76kpi6dmaxmwj1mpdd2g0b4n1wfimqfaz6gi1";
+  }) {};
+
+  pkgsUnstable = import <nixpkgs-unstable> {};
+  
 in {
   targets.genericLinux.enable = true;
 
@@ -70,13 +79,14 @@ in {
 
   home.packages = with pkgs; [
     htop
-    mlocate
+    findutils
     tree
     jq
     silver-searcher
     ripgrep
     fd
     cmake
+    comma
 
     vim
     gitAndTools.git-codereview
@@ -85,13 +95,15 @@ in {
     fira-code-symbols
 
     rustup
-    rust-analyzer
+    pkgsUnstable.rust-analyzer
     go
     protobuf
     yarn
     nodejs
     texlive.combined.scheme-medium
-
+    nixfmt
+    shellcheck
+    
     python-with-my-packages
 
     spotify
