@@ -2,23 +2,28 @@
 
 with pkgs;
 let
-  my-python-packages = python-packages: with python-packages; [
-    matplotlib
-    python-language-server
-    moretools
-    # other python packages you want
-  ]; 
+  my-python-packages = python-packages:
+    with python-packages; [
+      python-language-server
+      moretools
+      matplotlib
+      numpy
+      scipy
+      tweepy
+      pandas
+      # other python packages you want
+    ];
   python-with-my-packages = python3.withPackages my-python-packages;
 
-  comma = import ( fetchFromGitHub {
-      owner = "Shopify";
-      repo = "comma";
-      rev = "4a62ec17e20ce0e738a8e5126b4298a73903b468";
-      sha256 = "0n5a3rnv9qnnsrl76kpi6dmaxmwj1mpdd2g0b4n1wfimqfaz6gi1";
-  }) {};
+  comma = import (fetchFromGitHub {
+    owner = "Shopify";
+    repo = "comma";
+    rev = "4a62ec17e20ce0e738a8e5126b4298a73903b468";
+    sha256 = "0n5a3rnv9qnnsrl76kpi6dmaxmwj1mpdd2g0b4n1wfimqfaz6gi1";
+  }) { };
 
-  pkgsUnstable = import <nixpkgs-unstable> {};
-  
+  pkgsUnstable = import <nixpkgs-unstable> { };
+
 in {
   targets.genericLinux.enable = true;
 
@@ -35,11 +40,13 @@ in {
     sessionVariables = {
       GOPATH = "/home/martijn/go";
       GOBIN = "${config.programs.zsh.sessionVariables.GOPATH}/bin";
-      PATH = "$HOME/.cargo/bin:$HOME/.emacs.d/bin:${config.programs.zsh.sessionVariables.GOBIN}:$(yarn global bin):$PATH";
+      PATH =
+        "$HOME/.cargo/bin:$HOME/.emacs.d/bin:${config.programs.zsh.sessionVariables.GOBIN}:$(yarn global bin):$PATH";
       EDITOR = "vim";
     };
     shellAliases = {
-      bst = "curl -s https://api.cryptowat.ch/markets/bitstamp/xrpeur/summary | jq '.result.price'";
+      bst =
+        "curl -s https://api.cryptowat.ch/markets/bitstamp/xrpeur/summary | jq '.result.price'";
       up = "sudo wg-quick up wg0";
       down = "sudo wg-quick down wg0";
     };
@@ -62,12 +69,8 @@ in {
     userName = "Martijn Janssen";
     userEmail = "martijn9612+github@gmail.com";
     extraConfig = {
-      pull = {
-        rebase = "true";
-      };
-      http = {
-        cookieFile = "~/.gitcookies";
-      };
+      pull = { rebase = "true"; };
+      http = { cookieFile = "~/.gitcookies"; };
     };
   };
 
@@ -75,7 +78,6 @@ in {
     enable = true;
     extraPackages = epkgs: [ epkgs.vterm ];
   };
-
 
   home.packages = with pkgs; [
     htop
@@ -103,7 +105,7 @@ in {
     texlive.combined.scheme-medium
     nixfmt
     shellcheck
-    
+
     python-with-my-packages
 
     spotify
@@ -113,13 +115,13 @@ in {
     transmission-gtk
     tdesktop
     teams
+    google-chrome
 
     openttd
 
     gnomeExtensions.caffeine
     dropbox
   ];
-
 
   home.file.".ssh/config".source = dotfiles/ssh/config;
 
