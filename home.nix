@@ -105,8 +105,9 @@ in {
     texlive.combined.scheme-medium
     nixfmt
     shellcheck
+    docker-compose
 
-    python-with-my-packages
+    # python-with-my-packages
 
     spotify
     streamlink
@@ -115,11 +116,14 @@ in {
     transmission-gtk
     tdesktop
     teams
+
     google-chrome
 
     openttd
 
+    pulseeffects
     gnomeExtensions.caffeine
+    gnomeExtensions.sound-output-device-chooser
     dropbox
   ];
 
