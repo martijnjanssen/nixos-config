@@ -102,12 +102,14 @@ in {
     protobuf
     yarn
     nodejs
-    texlive.combined.scheme-medium
     nixfmt
     shellcheck
     docker-compose
 
+    # texlive.combined.scheme-medium
+
     # python-with-my-packages
+    # black
 
     spotify
     streamlink
