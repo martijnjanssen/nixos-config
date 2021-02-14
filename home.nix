@@ -41,7 +41,7 @@ in {
       GOPATH = "/home/martijn/go";
       GOBIN = "${config.programs.zsh.sessionVariables.GOPATH}/bin";
       PATH =
-        "$HOME/.cargo/bin:$HOME/.emacs.d/bin:${config.programs.zsh.sessionVariables.GOBIN}:$(yarn global bin):$PATH";
+        "$HOME/Downloads/webdsl/bin:$HOME/.cargo/bin:$HOME/.emacs.d/bin:${config.programs.zsh.sessionVariables.GOBIN}:$(yarn global bin):$PATH";
       EDITOR = "vim";
     };
     shellAliases = {
@@ -49,6 +49,8 @@ in {
         "curl -s https://api.cryptowat.ch/markets/bitstamp/xrpeur/summary | jq '.result.price'";
       up = "sudo wg-quick up wg0";
       down = "sudo wg-quick down wg0";
+      dockerup = "sudo systemctl start docker";
+      dockerdown = "sudo systemctl stop docker";
     };
     initExtra = ''
       race () {
@@ -105,6 +107,10 @@ in {
     nixfmt
     shellcheck
     docker-compose
+
+    # for webdsl
+    ant
+    adoptopenjdk-bin
 
     # texlive.combined.scheme-medium
 
