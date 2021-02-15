@@ -107,6 +107,7 @@ in {
     nixfmt
     shellcheck
     docker-compose
+    pkgsUnstable.fluxcd
 
     # for webdsl
     ant
