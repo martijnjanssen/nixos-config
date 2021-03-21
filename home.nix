@@ -38,19 +38,22 @@ in {
     enable = true;
     enableAutosuggestions = true;
     sessionVariables = {
-      GOPATH = "/home/martijn/go";
+      GOPATH = "$HOME/go";
       GOBIN = "${config.programs.zsh.sessionVariables.GOPATH}/bin";
       PATH =
-        "$HOME/Downloads/webdsl/bin:$HOME/.cargo/bin:$HOME/.emacs.d/bin:${config.programs.zsh.sessionVariables.GOBIN}:$(yarn global bin):$PATH";
+        "$HOME/Downloads/webdsl/bin:$HOME/.cargo/bin:$HOME/.emacs.d/bin:${config.programs.zsh.sessionVariables.GOBIN}:$(yarn global bin):$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH";
       EDITOR = "vim";
+      ANDROID_HOME = "$HOME/Android/Sdk";
     };
     shellAliases = {
+      h = "home-manager";
       bst =
         "curl -s https://api.cryptowat.ch/markets/bitstamp/xrpeur/summary | jq '.result.price'";
       up = "sudo wg-quick up wg0";
       down = "sudo wg-quick down wg0";
       dockerup = "sudo systemctl start docker";
       dockerdown = "sudo systemctl stop docker";
+      web = "webdsl";
     };
     initExtra = ''
       race () {
@@ -108,6 +111,10 @@ in {
     shellcheck
     docker-compose
     pkgsUnstable.fluxcd
+
+    # for react
+    android-studio
+    watchman
 
     # for webdsl
     ant

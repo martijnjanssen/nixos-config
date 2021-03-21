@@ -36,6 +36,8 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
 
+;; Associate tsx files with typescript mode
+;; (add-to-list 'auto-mode-alist '("\\.tsx\\'" . js-jsx-mode))
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
