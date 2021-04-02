@@ -41,9 +41,10 @@ in {
       GOPATH = "$HOME/go";
       GOBIN = "${config.programs.zsh.sessionVariables.GOPATH}/bin";
       PATH =
-        "$HOME/Downloads/webdsl/bin:$HOME/.cargo/bin:$HOME/.emacs.d/bin:${config.programs.zsh.sessionVariables.GOBIN}:$(yarn global bin):$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH";
+        "$HOME/Downloads/webdsl/bin:$HOME/.cargo/bin:$HOME/.emacs.d/bin:${config.programs.zsh.sessionVariables.GOBIN}:$(yarn global bin):$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$HOME/flutter/bin:$PATH";
       EDITOR = "vim";
       ANDROID_HOME = "$HOME/Android/Sdk";
+      CHROME_EXECUTABLE = "$HOME/.nix-profile/bin/google-chrome-stable";
     };
     shellAliases = {
       h = "home-manager";
@@ -112,13 +113,15 @@ in {
     docker-compose
     pkgsUnstable.fluxcd
 
-    # for react
+    # for react/flutter
     android-studio
+    # For react
     watchman
 
     # for webdsl
     ant
     adoptopenjdk-bin
+    # openjdk8
 
     # texlive.combined.scheme-medium
 
@@ -134,10 +137,11 @@ in {
     teams
 
     google-chrome
+    chromium
 
     openttd
 
-    pulseeffects
+    pulseeffects-legacy
     gnomeExtensions.caffeine
     gnomeExtensions.sound-output-device-chooser
     dropbox
