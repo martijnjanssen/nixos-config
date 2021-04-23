@@ -41,7 +41,7 @@ in {
       GOPATH = "$HOME/go";
       GOBIN = "${config.programs.zsh.sessionVariables.GOPATH}/bin";
       PATH =
-        "$HOME/Downloads/webdsl/bin:$HOME/.cargo/bin:$HOME/.emacs.d/bin:${config.programs.zsh.sessionVariables.GOBIN}:$(yarn global bin):$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$HOME/flutter/bin:$PATH";
+        "$HOME/Downloads/webdsl/bin:$HOME/.cargo/bin:$HOME/.emacs.d/bin:${config.programs.zsh.sessionVariables.GOBIN}:$(yarn global bin):$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$HOME/flutter/bin:$HOME/.pub-cache/bin:$PATH";
       EDITOR = "vim";
       ANDROID_HOME = "$HOME/Android/Sdk";
       CHROME_EXECUTABLE = "$HOME/.nix-profile/bin/google-chrome-stable";
@@ -112,6 +112,7 @@ in {
     shellcheck
     docker-compose
     pkgsUnstable.fluxcd
+    kubeseal
 
     # for react/flutter
     android-studio
@@ -122,6 +123,11 @@ in {
     ant
     adoptopenjdk-bin
     # openjdk8
+
+    # thesis
+    nethogs
+    pkgsUnstable.ccls
+    clang
 
     # texlive.combined.scheme-medium
 
