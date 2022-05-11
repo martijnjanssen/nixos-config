@@ -16,10 +16,10 @@ let
   python-with-my-packages = python3.withPackages my-python-packages;
 
   comma = import (fetchFromGitHub {
-    owner = "Shopify";
+    owner = "nix-community";
     repo = "comma";
-    rev = "4a62ec17e20ce0e738a8e5126b4298a73903b468";
-    sha256 = "0n5a3rnv9qnnsrl76kpi6dmaxmwj1mpdd2g0b4n1wfimqfaz6gi1";
+    rev = "02e3e5545b0c62595a77f3d5de1223c536af0614";
+    sha256 = "0qgg632ky6bnwkf9kh1z4f12dilkmdy0xgpal26g2vv416di04jq";
   }) { };
 
   pkgsUnstable = import <nixpkgs-unstable> { };
@@ -41,7 +41,7 @@ in {
       GOPATH = "$HOME/go";
       GOBIN = "${config.programs.zsh.sessionVariables.GOPATH}/bin";
       PATH =
-        "$HOME/Downloads/webdsl/bin:$HOME/.cargo/bin:$HOME/.emacs.d/bin:${config.programs.zsh.sessionVariables.GOBIN}:$(yarn global bin):$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$HOME/flutter/bin:$HOME/.pub-cache/bin:$PATH";
+        "$HOME/Downloads/webdsl/bin:$HOME/.cargo/bin:$HOME/.emacs.d/bin:${config.programs.zsh.sessionVariables.GOBIN}:$(yarn global bin):$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$HOME/flutter/bin:$HOME/flutter/.pub-cache/bin:$PATH";
       EDITOR = "vim";
       ANDROID_HOME = "$HOME/Android/Sdk";
       CHROME_EXECUTABLE = "$HOME/.nix-profile/bin/google-chrome-stable";
@@ -104,7 +104,7 @@ in {
 
     rustup
     pkgsUnstable.rust-analyzer
-    go
+    go_1_17
     protobuf
     yarn
     nodejs
@@ -120,14 +120,9 @@ in {
     watchman
 
     # for webdsl
-    ant
-    adoptopenjdk-bin
-    # openjdk8
-
-    # thesis
-    nethogs
-    pkgsUnstable.ccls
-    clang
+    # ant
+    # adoptopenjdk-bin
+    openjdk8
 
     # texlive.combined.scheme-medium
 
@@ -135,12 +130,11 @@ in {
     # black
 
     spotify
-    streamlink
     vlc
     mpv
     transmission-gtk
     tdesktop
-    teams
+    #teams
 
     google-chrome
     chromium
@@ -148,8 +142,8 @@ in {
     openttd
 
     pulseeffects-legacy
-    gnomeExtensions.caffeine
-    gnomeExtensions.sound-output-device-chooser
+    pkgsUnstable.gnomeExtensions.caffeine
+    pkgsUnstable.gnomeExtensions.sound-output-device-chooser
     dropbox
   ];
 
