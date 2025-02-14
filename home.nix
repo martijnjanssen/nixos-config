@@ -95,12 +95,10 @@ in {
     fd
     cmake
     comma
+    qrencode
 
     vim
     gitAndTools.git-codereview
-
-    fira-code
-    fira-code-symbols
 
     rustup
     # pkgsUnstable.rust-analyzer
@@ -111,23 +109,15 @@ in {
     nixfmt
     shellcheck
     docker-compose
-    pkgsUnstable.fluxcd
     kubeseal
+    kubectl
+    argocd
 
     # for react/flutter
     android-studio
-    # For react
-    watchman
 
-    # for webdsl
-    # ant
     # adoptopenjdk-bin
     openjdk8
-
-    # texlive.combined.scheme-medium
-
-    # python-with-my-packages
-    # black
 
     spotify
     vlc
@@ -135,22 +125,22 @@ in {
     transmission_4-gtk
     transmission-remote-gtk
     tdesktop
-    #teams
 
     google-chrome
-    chromium
+    #    chromium
 
-    openttd
+    #    openttd
 
     pulseeffects-legacy
-    pkgsUnstable.gnomeExtensions.caffeine
-    pkgsUnstable.gnomeExtensions.sound-output-device-chooser
-    dropbox
+    gnomeExtensions.caffeine
+    gnomeExtensions.sound-output-device-chooser
+
+    darktable
   ];
 
   home.file.".ssh/config".source = dotfiles/ssh/config;
 
-  home.file.".spacemacs".source = dotfiles/spacemacs/spacemacs;
+  #  home.file.".spacemacs".source = dotfiles/spacemacs/spacemacs;
   home.file.".doom.d/init.el".source = dotfiles/doom/init.el;
   home.file.".doom.d/config.el".source = dotfiles/doom/config.el;
   home.file.".doom.d/packages.el".source = dotfiles/doom/packages.el;
@@ -168,5 +158,5 @@ in {
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "20.09";
+  home.stateVersion = "23.05";
 }
