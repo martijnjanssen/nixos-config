@@ -36,12 +36,12 @@ in {
 
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
+    autosuggestion = { enable = true; };
     sessionVariables = {
       GOPATH = "$HOME/go";
       GOBIN = "${config.programs.zsh.sessionVariables.GOPATH}/bin";
       PATH =
-        "$HOME/Downloads/webdsl/bin:$HOME/.cargo/bin:$HOME/.emacs.d/bin:${config.programs.zsh.sessionVariables.GOBIN}:$(yarn global bin):$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$HOME/flutter/bin:$HOME/flutter/.pub-cache/bin:$PATH";
+        "$HOME/Downloads/webdsl/bin:$HOME/.cargo/bin:$HOME/.config/emacs/bin:${config.programs.zsh.sessionVariables.GOBIN}:$(yarn global bin):$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$HOME/flutter/bin:$HOME/flutter/.pub-cache/bin:$PATH";
       EDITOR = "vim";
       ANDROID_HOME = "$HOME/Android/Sdk";
       CHROME_EXECUTABLE = "$HOME/.nix-profile/bin/google-chrome-stable";
@@ -103,8 +103,8 @@ in {
     fira-code-symbols
 
     rustup
-    pkgsUnstable.rust-analyzer
-    go_1_17
+    # pkgsUnstable.rust-analyzer
+    go_1_23
     protobuf
     yarn
     nodejs
@@ -132,7 +132,8 @@ in {
     spotify
     vlc
     mpv
-    transmission-gtk
+    transmission_4-gtk
+    transmission-remote-gtk
     tdesktop
     #teams
 
