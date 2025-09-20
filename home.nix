@@ -34,6 +34,9 @@ in {
 
   fonts.fontconfig.enable = true;
 
+  # Needed for calibre
+  services.udisks2.enable = true;
+
   programs.zsh = {
     enable = true;
     autosuggestion = { enable = true; };
@@ -136,6 +139,8 @@ in {
     gnomeExtensions.sound-output-device-chooser
 
     darktable
+    imagemagick
+    calibre
   ];
 
   home.file.".ssh/config".source = dotfiles/ssh/config;
