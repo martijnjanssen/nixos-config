@@ -2,23 +2,23 @@
 
 with pkgs;
 let
-  my-python-packages = python-packages:
-    with python-packages; [
-      python-language-server
-      moretools
-      matplotlib
-      numpy
-      scipy
-      tweepy
-      pandas
-      # other python packages you want
-    ];
-  python-with-my-packages = python3.withPackages my-python-packages;
+  # my-python-packages = python-packages:
+  #   with python-packages; [
+  #     python-language-server
+  #     moretools
+  #     matplotlib
+  #     numpy
+  #     scipy
+  #     tweepy
+  #     pandas
+  #     # other python packages you want
+  #   ];
+  # python-with-my-packages = python3.withPackages my-python-packages;
 
   comma = import (fetchFromGitHub {
     owner = "nix-community";
     repo = "comma";
-    rev = "02e3e5545b0c62595a77f3d5de1223c536af0614";
+    rev = "531e5219b25c1584461cc4b7fb11729a9b928b2b";
     sha256 = "0qgg632ky6bnwkf9kh1z4f12dilkmdy0xgpal26g2vv416di04jq";
   }) { };
 
@@ -35,7 +35,7 @@ in {
   fonts.fontconfig.enable = true;
 
   # Needed for calibre
-  services.udisks2.enable = true;
+  # services.udisks2.enable = true;
 
   programs.zsh = {
     enable = true;
@@ -44,7 +44,7 @@ in {
       GOPATH = "$HOME/go";
       GOBIN = "${config.programs.zsh.sessionVariables.GOPATH}/bin";
       PATH =
-        "$HOME/Downloads/webdsl/bin:$HOME/.cargo/bin:$HOME/.config/emacs/bin:${config.programs.zsh.sessionVariables.GOBIN}:$(yarn global bin):$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$HOME/flutter/bin:$HOME/flutter/.pub-cache/bin:$PATH";
+        "$HOME/.cargo/bin:$HOME/.config/emacs/bin:${config.programs.zsh.sessionVariables.GOBIN}:$(yarn global bin):$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$HOME/flutter/bin:$HOME/flutter/.pub-cache/bin:$PATH";
       EDITOR = "vim";
       ANDROID_HOME = "$HOME/Android/Sdk";
       CHROME_EXECUTABLE = "$HOME/.nix-profile/bin/google-chrome-stable";
@@ -57,9 +57,8 @@ in {
       down = "sudo wg-quick down wg0";
       dockerup = "sudo systemctl start docker";
       dockerdown = "sudo systemctl stop docker";
-      web = "webdsl";
     };
-    initExtra = ''
+    initContent = ''
       race () {
         streamlink $1 1080p --hls-audio-select "*"
       }
@@ -106,7 +105,7 @@ in {
 
     rustup
     # pkgsUnstable.rust-analyzer
-    go_1_23
+    go_1_25
     protobuf
     yarn
     nodejs
@@ -170,5 +169,5 @@ in {
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "23.05";
+  home.stateVersion = "25.05";
 }
