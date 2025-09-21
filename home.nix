@@ -99,6 +99,7 @@ in {
     cmake
     comma
     qrencode
+    pgcli
 
     vim
     gitAndTools.git-codereview
@@ -118,9 +119,15 @@ in {
 
     # for react/flutter
     android-studio
+    clang
+    cmake
+    ninja
+    pkg-config
+    gtk3
 
     # adoptopenjdk-bin
-    openjdk8
+    # openjdk8
+    jdk23
 
     spotify
     vlc
