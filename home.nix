@@ -142,7 +142,6 @@ in {
 
     pulseeffects-legacy
     gnomeExtensions.caffeine
-    gnomeExtensions.sound-output-device-chooser
 
     darktable
     imagemagick
