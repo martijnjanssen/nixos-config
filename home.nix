@@ -24,7 +24,8 @@ let
 
   pkgsUnstable = import <nixpkgs-unstable> { };
 
-in {
+in
+{
   targets.genericLinux.enable = true;
 
   nixpkgs.config.allowUnfree = true;
@@ -39,20 +40,21 @@ in {
 
   programs.zsh = {
     enable = true;
-    autosuggestion = { enable = true; };
+    autosuggestion = {
+      enable = true;
+    };
     sessionVariables = {
       GOPATH = "$HOME/go";
       GOBIN = "${config.programs.zsh.sessionVariables.GOPATH}/bin";
-      PATH =
-        "$HOME/.cargo/bin:$HOME/.config/emacs/bin:${config.programs.zsh.sessionVariables.GOBIN}:$(yarn global bin):$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$HOME/flutter/bin:$HOME/flutter/.pub-cache/bin:$PATH";
+      PATH = "$HOME/.cargo/bin:$HOME/.config/emacs/bin:${config.programs.zsh.sessionVariables.GOBIN}:$(yarn global bin):$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$HOME/flutter/bin:$HOME/.pub-cache/bin:$PATH";
       EDITOR = "vim";
       ANDROID_HOME = "$HOME/Android/Sdk";
       CHROME_EXECUTABLE = "$HOME/.nix-profile/bin/google-chrome-stable";
+      PKG_CONFIG_PATH = "$PKG_CONFIG_PATH:/usr/lib/x86_64-linux-gnu/pkgconfig";
     };
     shellAliases = {
       h = "home-manager";
-      bst =
-        "curl -s https://api.cryptowat.ch/markets/bitstamp/xrpeur/summary | jq '.result.price'";
+      bst = "curl -s https://api.cryptowat.ch/markets/bitstamp/xrpeur/summary | jq '.result.price'";
       up = "sudo wg-quick up wg0";
       down = "sudo wg-quick down wg0";
       dockerup = "sudo systemctl start docker";
@@ -68,17 +70,26 @@ in {
       enable = true;
       theme = "robbyrussell";
 
-      plugins = [ "git" "docker" ];
+      plugins = [
+        "git"
+        "docker"
+      ];
     };
   };
 
   programs.git = {
     enable = true;
-    userName = "Martijn Janssen";
-    userEmail = "martijn9612+github@gmail.com";
-    extraConfig = {
-      pull = { rebase = "true"; };
-      http = { cookieFile = "~/.gitcookies"; };
+    settings = {
+      user = {
+        name = "Martijn Janssen";
+        email = "martijn9612+github@gmail.com";
+      };
+      pull = {
+        rebase = "true";
+      };
+      http = {
+        cookieFile = "~/.gitcookies";
+      };
     };
   };
 
@@ -117,7 +128,7 @@ in {
     argocd
 
     # for react/flutter
-    android-studio
+    # android-studio
     clang
     cmake
     ninja
@@ -151,9 +162,9 @@ in {
   home.file.".ssh/config".source = dotfiles/ssh/config;
 
   #  home.file.".spacemacs".source = dotfiles/spacemacs/spacemacs;
-  home.file.".doom.d/init.el".source = dotfiles/doom/init.el;
-  home.file.".doom.d/config.el".source = dotfiles/doom/config.el;
-  home.file.".doom.d/packages.el".source = dotfiles/doom/packages.el;
+  home.file."./.config/doom/init.el".source = dotfiles/doom/init.el;
+  home.file."./.config/doom/config.el".source = dotfiles/doom/config.el;
+  home.file."./.config/doom/packages.el".source = dotfiles/doom/packages.el;
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
