@@ -119,7 +119,7 @@ in
     go_1_25
     protobuf
     yarn
-    nodejs
+    nodejs_24
     nixfmt
     shellcheck
     docker-compose
@@ -134,6 +134,7 @@ in
     ninja
     pkg-config
     gtk3
+    ruby
 
     # adoptopenjdk-bin
     # openjdk8
