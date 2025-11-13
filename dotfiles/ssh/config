@@ -1,9 +1,9 @@
-Host nixos-server-large
+Host nixos-server-large-ext
   HostName martijnj.nl
   User nix
   IdentityFile ~/.ssh/nixos-server
 
-Host nixos-server-large-local
+Host nixos-server-large
   HostName 192.168.1.2
   User nix
   IdentityFile ~/.ssh/nixos-server
