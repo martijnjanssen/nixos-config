@@ -110,10 +110,12 @@ in
     comma
     qrencode
     pgcli
+    nmap
 
     vim
     gitAndTools.git-codereview
 
+    ccls
     rustup
     # pkgsUnstable.rust-analyzer
     go_1_25
