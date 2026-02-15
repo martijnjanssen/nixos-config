@@ -111,6 +111,9 @@ in
     qrencode
     pgcli
     nmap
+    rsync
+
+    bitwarden-desktop
 
     vim
     gitAndTools.git-codereview
@@ -153,6 +156,9 @@ in
     #    chromium
 
     #    openttd
+
+    discord
+    protonplus
 
     pulseeffects-legacy
     gnomeExtensions.caffeine
