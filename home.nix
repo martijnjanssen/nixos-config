@@ -53,6 +53,7 @@ in
       PKG_CONFIG_PATH = "$PKG_CONFIG_PATH:/usr/lib/x86_64-linux-gnu/pkgconfig";
     };
     shellAliases = {
+      sudo = "sudo env PATH=$PATH";
       h = "home-manager";
       bst = "curl -s https://api.cryptowat.ch/markets/bitstamp/xrpeur/summary | jq '.result.price'";
       up = "sudo wg-quick up wg0";
@@ -95,7 +96,7 @@ in
 
   programs.emacs = {
     enable = true;
-    extraPackages = epkgs: [ epkgs.vterm ];
+    # extraPackages = epkgs: [ epkgs.vterm ];
   };
 
   home.packages = with pkgs; [
@@ -116,7 +117,7 @@ in
     bitwarden-desktop
 
     vim
-    gitAndTools.git-codereview
+    git-codereview
 
     ccls
     rustup
@@ -130,7 +131,7 @@ in
     docker-compose
     kubeseal
     kubectl
-    argocd
+    # argocd
 
     # for react/flutter
     # android-studio
@@ -143,14 +144,14 @@ in
 
     # adoptopenjdk-bin
     # openjdk8
-    jdk23
+    # jdk23
 
     spotify
     vlc
     mpv
     transmission_4-gtk
     transmission-remote-gtk
-    tdesktop
+    telegram-desktop
 
     google-chrome
     #    chromium
@@ -188,5 +189,5 @@ in
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "25.05";
+  home.stateVersion = "25.11";
 }
